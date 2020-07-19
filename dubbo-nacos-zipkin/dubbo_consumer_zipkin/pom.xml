@@ -8,10 +8,10 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
-    <artifactId>dubbo_consumer</artifactId>
+    <artifactId>dubbo_consumer_zipkin</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>dubbo_consumer</name>
-    <description>dubbo_consumer</description>
+    <name>dubbo_consumer_zipkin</name>
+    <description>dubbo_consumer_zipkin</description>
     <packaging>jar</packaging>
 
     <properties>

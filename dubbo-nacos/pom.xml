@@ -2,7 +2,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>dubbo-spring-cloud-demo</artifactId>
+        <artifactId>spring-cloud-alibaba-sample</artifactId>
         <groupId>com.springcloud</groupId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
