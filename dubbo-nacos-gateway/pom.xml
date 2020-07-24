@@ -4,25 +4,28 @@
     <parent>
         <artifactId>spring-cloud-alibaba-sample</artifactId>
         <groupId>com.springcloud</groupId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>1.0.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>com.springcloud</groupId>
-    <artifactId>dubbo-nacos-skywalking</artifactId>
-    <name>micro体系-skywalking</name>
-    <description>micro体系-skywalking</description>
+    <artifactId>dubbo-nacos-gateway</artifactId>
+    <name>micro体系-gateway</name>
     <packaging>pom</packaging>
-
+    <description>micro体系-gateway</description>
 
     <modules>
+        <module>dubbo-gateway</module>
+        <module>dubbo-rest-a</module>
+        <module>dubbo-rest-b</module>
     </modules>
 
     <properties>
         <java.version>1.8</java.version>
-    </properties>
-    <dependencies>
+   </properties>
 
+    <dependencies>
     </dependencies>
+
     <build>
         <plugins>
             <plugin>

@@ -1,14 +1,14 @@
 server:
-  port: 8080
+  port: 8084
   servlet:
-    context-path: /dubbo
+    context-path: /api-b
 
 dubbo:
   consumer:
     timeout: 30000
   application:
-    id: micro-dubbo-comsumer
-    name: micro-dubbo-comsumer
+    id: micro-dubbo-rest-b
+    name: micro-dubbo-rest-b
   protocol:
     name: dubbo
     port: -1
@@ -19,7 +19,7 @@ dubbo:
 
 spring:
   application:
-    name: dubbo-spring-cloud-consumer
+    name: micro-dubbo-rest-b
   cloud:
     nacos:
       discovery:

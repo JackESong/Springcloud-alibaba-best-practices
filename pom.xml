@@ -21,6 +21,7 @@
     <modules>
         <module>dubbo-nacos</module>
         <module>dubbo-nacos-skywalking</module>
+        <module>dubbo-nacos-gateway</module>
     </modules>
 
     <properties>
@@ -76,7 +77,6 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
