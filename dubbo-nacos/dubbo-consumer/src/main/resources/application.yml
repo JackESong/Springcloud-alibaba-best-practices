@@ -1,0 +1,26 @@
+server:
+  port: 8080
+
+dubbo:
+  consumer:
+    timeout: 30000
+  application:
+    id: micro-dubbo-comsumer
+    name: micro-dubbo-comsumer
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: spring-cloud://127.0.0.1
+  cloud:
+    subscribed-services: dubbo-spring-cloud-provider
+
+spring:
+  application:
+    name: dubbo-spring-cloud-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+  main:
+    allow-bean-definition-overriding: true

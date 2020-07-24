@@ -2,22 +2,25 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.2.5.RELEASE</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
+
     <groupId>com.springcloud</groupId>
     <artifactId>spring-cloud-alibaba-sample</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>spring-cloud-alibaba-sample</name>
-    <description>spring-cloud-alibaba整合</description>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
+    <name>micro体系</name>
+    <description>micro体系</description>
+
 
     <modules>
         <module>dubbo-nacos</module>
-        <module>dubbo-nacos-zipkin</module>
+        <module>dubbo-nacos-skywalking</module>
     </modules>
 
     <properties>
@@ -26,6 +29,7 @@
         <java.version>1.8</java.version>
         <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
         <spring-cloud-alibaba.version>2.2.1.RELEASE</spring-cloud-alibaba.version>
+        <dubbo-api.version>1.0.0</dubbo-api.version>
     </properties>
 
     <dependencyManagement>
@@ -43,6 +47,12 @@
                 <version>${spring-cloud-alibaba.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <!-- 引用公共组件 -->
+            <dependency>
+                <groupId>com.springcloud</groupId>
+                <artifactId>dubbo-api</artifactId>
+                <version>${dubbo-api.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -82,8 +92,21 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
+                <configuration>
+                    <skipTests>true</skipTests>    <!--默认关掉单元测试 -->
+                </configuration>
             </plugin>
         </plugins>
     </build>

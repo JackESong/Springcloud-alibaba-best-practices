@@ -1,0 +1,30 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: dubbo-spring-cloud-provider
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        register-enabled: true
+        server-addr: 127.0.0.1:8848
+  main:
+    allow-bean-definition-overriding: true
+
+dubbo:
+  scan:
+    base-packages: com.springcloud.dubbo_provider.service
+  application:
+    id: micro-dubbo-provider
+    name: micro-dubbo-provider
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 20881
+    status: server
+  registry:
+    id: micro-dubbo-provider-registry
+    address: spring-cloud://127.0.0.1
+

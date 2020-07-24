@@ -8,15 +8,12 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>com.springcloud</groupId>
-    <artifactId>dubbo-nacos</artifactId>
-    <name>dubbo-nacos</name>
+    <artifactId>dubbo-nacos-skywalking</artifactId>
+    <name>dubbo-nacos-skywalking</name>
     <packaging>pom</packaging>
-    <description>dubbo-nacos示例</description>
+    <description>dubbo-nacos-skywalking</description>
 
     <modules>
-        <module>dubbo-api</module>
-        <module>dubbo-provider</module>
-        <module>dubbo-consumer</module>
     </modules>
 
     <properties>
