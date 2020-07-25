@@ -22,6 +22,7 @@
         <module>dubbo-nacos</module>
         <module>dubbo-nacos-skywalking</module>
         <module>dubbo-nacos-gateway</module>
+        <module>dubbo-docker</module>
     </modules>
 
     <properties>
