@@ -1,0 +1,3 @@
+agent IP记得修改为上传的地址
+启动命令
+nohup java -jar -javaagent:/etc/opt/data/agent/skywalking-agent.jar=agent.service_name==服务名称 -Dskywalking.collector.servers=xxxxx:11800 xxx-*.jar > nohup.out & 2>&1 &
