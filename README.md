@@ -16,7 +16,8 @@ gateway网关 不能引入starter-web pom.xml文件注意一下
 http://localhost/api-a/hello
 http://localhost/api-b/hello
 ## 4.dubbo-docker
-规划中
+构建完成
+上传镜像到阿里云私有仓库实验
 ## 5.dubbo-rocketmq
 规划中
 ## 6.dubbo-kafka
