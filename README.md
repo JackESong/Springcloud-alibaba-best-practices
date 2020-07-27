@@ -18,9 +18,9 @@ http://localhost/api-b/hello
 ## 4.dubbo-docker
 构建完成
 上传镜像到阿里云私有仓库实验
-## 5.dubbo-rocketmq
+## 5.dubbo-kafka
 规划中
-## 6.dubbo-kafka
+## 6.dubbo-rocketmq
 规划中
 ## 7.dubbo-seata
 规划中
