@@ -16,14 +16,19 @@ gateway网关 不能引入starter-web pom.xml文件注意一下
 http://localhost/api-a/hello
 http://localhost/api-b/hello
 ## 4.dubbo-docker
-规划中
-## 5.dubbo-rocketmq
-规划中
+简易脚本制作
+
+## 5.dubbo-sentinel
+官方文档案例
+https://github.com/alibaba/Sentinel/tree/master/sentinel-demo
+
+完成限流测试
+
 ## 6.dubbo-kafka
 规划中
 ## 7.dubbo-seata
 规划中
-## 8.dubbo-sentinel
+## 8.dubbo-rocketmq
 规划中
 ## 9.dubbo-mqsql/oracle/sqlserver
 规划中

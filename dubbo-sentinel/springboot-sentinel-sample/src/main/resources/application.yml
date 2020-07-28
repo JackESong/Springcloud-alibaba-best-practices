@@ -1,0 +1,10 @@
+server:
+  port: 80
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: simple-rest-api
+  main:
+    allow-bean-definition-overriding: true
