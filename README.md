@@ -24,14 +24,9 @@ https://github.com/alibaba/Sentinel/tree/master/sentinel-demo
 完成限流测试
 ## 5.dubbo-kafka
 完成制作
-
-
-
-## 6.dubbo-rocketmq
+## 7.dubbo-rocketmq
 规划中
-## 7.dubbo-seata
-规划中
-## 8.dubbo-rocketmq
+## 8.dubbo-seata
 规划中
 ## 9.dubbo-mqsql/oracle/sqlserver
 规划中
