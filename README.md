@@ -21,10 +21,10 @@ http://localhost/api-b/hello
 ## 5.dubbo-sentinel
 官方文档案例
 https://github.com/alibaba/Sentinel/tree/master/sentinel-demo
-
 完成限流测试
-
-## 6.dubbo-kafka
+## 5.dubbo-kafka
+规划中
+## 6.dubbo-rocketmq
 规划中
 ## 7.dubbo-seata
 规划中
