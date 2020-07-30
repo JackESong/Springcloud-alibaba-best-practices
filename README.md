@@ -23,7 +23,7 @@ http://localhost/api-b/hello
 https://github.com/alibaba/Sentinel/tree/master/sentinel-demo
 完成限流测试
 ## 5.dubbo-kafka
-进行中
+完成制作
 
 
 
