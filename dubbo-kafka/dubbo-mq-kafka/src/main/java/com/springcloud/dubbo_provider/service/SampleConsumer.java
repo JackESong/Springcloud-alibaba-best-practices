@@ -11,14 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-/**
- * 类的功能描述：
- * 消息消费者者用于处理消息
- *
- * @ClassName: MessageConsumer
- * @Author
- * @Date
- */
 @Service
 public class SampleConsumer {
     private static Logger logger = LoggerFactory.getLogger(SampleConsumer.class);
