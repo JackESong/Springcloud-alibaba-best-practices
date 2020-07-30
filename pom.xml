@@ -24,6 +24,7 @@
         <module>dubbo-nacos-gateway</module>
         <module>dubbo-docker</module>
         <module>dubbo-sentinel</module>
+        <module>dubbo-kafka</module>
     </modules>
 
     <properties>
