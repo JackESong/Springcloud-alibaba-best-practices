@@ -22,20 +22,18 @@ http://localhost/api-b/hello
 官方文档案例
 https://github.com/alibaba/Sentinel/tree/master/sentinel-demo
 完成限流测试
-## 5.dubbo-kafka
+## 6.dubbo-kafka
 已制作
 可视化
 kafka-eagle
 kafka集群
-## 6.dubbo-rocketmq
+## 7.dubbo-rocketmq
 http://rocketmq.apache.org/
 https://github.com/apache/rocketmq/tree/master/docs/cn
 https://github.com/apache/rocketmq/blob/master/docs/cn/RocketMQ_Example.md
 可视化
  https://github.com/apache/rocketmq-externals/ 
-## 7.dubbo-seata
-规划中
-## 8.dubbo-rocketmq
+## 8.dubbo-seata
 规划中
 ## 9.dubbo-mqsql/oracle/sqlserver
 规划中
