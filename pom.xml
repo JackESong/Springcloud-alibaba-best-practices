@@ -25,6 +25,7 @@
         <module>dubbo-docker</module>
         <module>dubbo-sentinel</module>
         <module>dubbo-kafka</module>
+        <module>dubbo-rocketmq</module>
     </modules>
 
     <properties>
