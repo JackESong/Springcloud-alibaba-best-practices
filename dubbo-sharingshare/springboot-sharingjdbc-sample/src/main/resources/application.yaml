@@ -1,0 +1,143 @@
+###########################################################
+#
+#          URL 端口配置
+#
+###########################################################
+server:
+  port: 8000
+  servlet:
+    context-path: /sharding
+###########################################################
+#
+#          日志
+#
+###########################################################
+logging:
+  level:
+    root: info
+    druid:
+      sql: debug
+    org:
+      springframework:
+        web: info
+    com:
+      springcloud:
+        dubbo_provider: debug
+###########################################################
+#
+#                       数据源参数配置-druid
+#
+###########################################################
+initialSize: 5
+minIdle: 5
+maxIdle: 100
+maxActive: 20
+maxWait: 0000
+timeBetweenEvictionRunsMillis: 60000
+minEvictableIdleTimeMillis: 300000
+###########################################################
+#
+#          框架
+#
+###########################################################
+spring:
+  application:
+    name: micro-dubbo-shardingjdbc
+  http:
+    encoding:
+      enabled: true
+      charset: UTF-8
+      force: true
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        register-enabled: true
+        server-addr: 127.0.0.1:8848
+  shardingsphere: # 数据源分片详细配置
+    props:
+      sql:
+        show: true     # 打开sql输出日志
+    datasource:
+      names: db1,db2   #数据源名称，多数据源以逗号分隔
+      db1:            # 1库配置
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/order_db_1?useUnicode=true
+        username:  root
+        password: 123000
+        initialSize: ${initialSize}  # 连接池的配置信息 # 初始化大小，最小，最大
+        minIdle:  ${minIdle}          # 只需配置minIdle最小连接池数量，maxIdle已经不再使用，配置了也没效果
+        maxActive: ${maxActive}      # 最大连接池数量
+        maxWait: ${maxWait}          # 配置获取连接等待超时的时间
+        validationQuery: SELECT 1 FROM DUAL  # 用来检测连接是否有效的sql
+        timeBetweenEvictionRunsMillis:  ${timeBetweenEvictionRunsMillis} # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+        minEvictableIdleTimeMillis: ${minEvictableIdleTimeMillis}     # 配置一个连接在池中最小生存的时间，单位是毫秒
+      db2:            # 1库配置
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/order_db_2?useUnicode=true
+        username:  root
+        password: 123000
+        initialSize: ${initialSize}  # 连接池的配置信息 # 初始化大小，最小，最大
+        minIdle:  ${minIdle}          # 只需配置minIdle最小连接池数量，maxIdle已经不再使用，配置了也没效果
+        maxActive: ${maxActive}      # 最大连接池数量
+        maxWait: ${maxWait}          # 配置获取连接等待超时的时间
+        validationQuery: SELECT 1 FROM DUAL  # 用来检测连接是否有效的sql
+        timeBetweenEvictionRunsMillis:  ${timeBetweenEvictionRunsMillis} # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+        minEvictableIdleTimeMillis: ${minEvictableIdleTimeMillis}     # 配置一个连接在池中最小生存的时间，单位是毫秒
+    sharding:                         #################### t_order表分片策略 ##############################
+      tables:
+        t_order:
+          actual-data-nodes: db$->{1..2}.t_order_$->{1..3} # 指定t_order表的数据分布情况，配置数据节点
+          database-strategy: # 分库策略
+            complex:
+              sharding-columns: user_id    # 自定义数据库分片策略
+               algorithm-class-name: com.ryf.dbsharding.simple.ShardingAlgorithm.SnoWalkerComplexShardingDB
+          table-strategy:    # 分片策略
+            inline:
+              sharding-column: order_id    # 自定义t_order表分片策略
+              algorithm-class-name: com.ryf.dbsharding.simple.ShardingAlgorithm.SnoWalkerComplexShardingTable
+          key-generator:
+            column: order_id # 指定t_order表的主键生成策略为SNOWFLAKE
+            type: SNOWFLAKE
+
+###########################################################
+# 分库策略，以user_id为分片键，分片策略为user_id % 2 + 1，user_id为偶数操作m1数据源，否则操作m2。
+#spring.shardingsphere.sharding.tables.t_order.database-strategy.inline.sharding-column = user_id
+#spring.shardingsphere.sharding.tables.t_order.database-strategy.inline.algorithm-expression = db$->{user_id % 2 + 1}
+
+# 指定t_order表的分片策略，分片策略包括分片键和分片算法
+#spring.shardingsphere.sharding.tables.t_order.table-strategy.inline.sharding-column = order_id
+#spring.shardingsphere.sharding.tables.t_order.table-strategy.inline.algorithm-expression = t_order_$->{order_id % 2 + 1}
+# -----------------------------新公式解析-----------------------------
+# 其中6表示总共有多少个分表，3表示每个库有多少张分表, 6/3 = 2 表示有多少个数据库；
+# 上面这个例子，表示总共有2个数据库，每个数据库有3个分表，所以是2 * 3 = 6；
+###########################################################
+
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+###########################################################
+#
+#          dubbo框架
+#
+###########################################################
+dubbo:
+  scan:
+    base-packages: com.springcloud.dubbo_provider.service
+  application:
+    id: micro-dubbo-shardingjdbc
+    name: micro-dubbo-shardingjdbc
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: 20881
+    status: server
+  registry:
+    id: micro-dubbo-shardingjdbc-registry
+    address: spring-cloud://127.0.0.1
+

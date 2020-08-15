@@ -33,13 +33,34 @@ https://github.com/apache/rocketmq/tree/master/docs/cn
 https://github.com/apache/rocketmq/blob/master/docs/cn/RocketMQ_Example.md
 可视化
  https://github.com/apache/rocketmq-externals/ 
-## 8.dubbo-seata
-规划中
+ 
+ ## 8.dubbo-sharingshare
+进行中
+springboot-sharingjdbc-sample：示列  整合自 shardingJDBC-master 进行功能校验
+计划：
+> jdbc-read-write-springboot：Spring Boot版 Sharding JDBC 读写分离示列
+
+> jdbc-db-sharding-springboot：Spring Boot版 Sharding JDBC 垂直拆分（不同的表在不同的库中）
+
+> jdbc-db-read-write-sharding-springboot：Spring Boot版 Sharding JDBC 垂直拆分（不同的表在不同的库中）+ 读写分离
+
+> jdbc-sharding-table-springboot：Spring Boot版 Sharding JDBC 不分库，只分表案例
+
+> jdbc-sharding-table-read-write-springboot：Spring Boot版 Sharding JDBC 不分库，只分表+读写分离案例
+
+> jdbc-db-sharding-table-springboot：Spring Boot版 Sharding JDBC 分库分表案例
+
+> jdbc-db-sharding-table-read-write-springboot：Spring Boot版 Sharding JDBC 分库分表+读写分离案例
+
+> jdbc-db-sharding-table-read-write-range-group-springboot：Spring Boot版 Sharding JDBC 分库分表+读写分离案例(范围分表+取模=无限扩容)
+
+代码整合自 https://github.com/yinjihuan/sharding-jdbc 进行功能校验
+
 ## 9.dubbo-mqsql/oracle/sqlserver
 规划中
 ## 10.dubbo-redission
 规划中
-## 11.dubbo-sharingshare
+## 11.dubbo-seata
 规划中
 ## 12.dubbo-mongodb
 规划中
