@@ -34,7 +34,11 @@ https://github.com/apache/rocketmq/blob/master/docs/cn/RocketMQ_Example.md
 可视化
  https://github.com/apache/rocketmq-externals/ 
  
- ## 8.dubbo-sharingshare
+## 8.dubbo-redisson
+进行中
+
+
+## 9.dubbo-sharingshare
 进行中
 springboot-sharingjdbc-sample：示列  整合自 shardingJDBC-master 进行功能校验
 计划：
@@ -56,9 +60,7 @@ springboot-sharingjdbc-sample：示列  整合自 shardingJDBC-master 进行功�
 
 代码整合自 https://github.com/yinjihuan/sharding-jdbc 进行功能校验
 
-## 9.dubbo-mqsql/oracle/sqlserver
-规划中
-## 10.dubbo-redission
+## 10.dubbo-mqsql/oracle/sqlserver
 规划中
 ## 11.dubbo-seata
 规划中

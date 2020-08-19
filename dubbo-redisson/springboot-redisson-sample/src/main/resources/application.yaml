@@ -1,0 +1,46 @@
+###########################################################
+#
+#          URL 端口配置
+#
+###########################################################
+server:
+  port: 8000
+  servlet:
+    context-path: /redisson
+###########################################################
+#
+#          日志
+#
+###########################################################
+logging:
+  level:
+    root: info
+    druid:
+      sql: debug
+    org:
+      springframework:
+        web: info
+    com:
+      springcloud:
+        dubbo_provider: debug
+###########################################################
+#
+#          框架
+#
+###########################################################
+spring:
+  application:
+    name: micro-dubbo-shardingjdbc
+  http:
+    encoding:
+      enabled: true
+      charset: UTF-8
+      force: true
+  main:
+    allow-bean-definition-overriding: true
+  redis:
+    port: 6379
+    host: 127.0.0.1
+    password: 999999999999
+    database: 0
+    timeout: 20000ms
