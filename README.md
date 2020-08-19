@@ -35,7 +35,7 @@ https://github.com/apache/rocketmq/blob/master/docs/cn/RocketMQ_Example.md
  https://github.com/apache/rocketmq-externals/ 
  
 ## 8.dubbo-redisson
-进行中
+自定义分布式锁
 
 
 ## 9.dubbo-sharingshare
