@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ReadWriteJdbcApplicaiton {
+public class JdbcApplicaiton {
     public static void main(String[] args) {
-        SpringApplication.run(ReadWriteJdbcApplicaiton.class, args);
+        SpringApplication.run(JdbcApplicaiton.class, args);
     }
 }
 

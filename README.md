@@ -40,15 +40,15 @@ https://github.com/apache/rocketmq/blob/master/docs/cn/RocketMQ_Example.md
 
 ## 9.dubbo-sharingshare
 进行中
-springboot-sharingjdbc-sample：示列  整合自 shardingJDBC-master 进行功能校验
-计划：
+> springboot-sharingjdbc-sample：示列  整合自 shardingJDBC-master 进行功能校验: 完成更新
+
 > jdbc-read-write-springboot：Spring Boot版 Sharding JDBC 读写分离示列 : 完成更新
+
+> jdbc-sharding-table-springboot：Spring Boot版 Sharding JDBC 不分库，只分表案例
 
 > jdbc-db-sharding-springboot：Spring Boot版 Sharding JDBC 垂直拆分（不同的表在不同的库中）
 
 > jdbc-db-read-write-sharding-springboot：Spring Boot版 Sharding JDBC 垂直拆分（不同的表在不同的库中）+ 读写分离
-
-> jdbc-sharding-table-springboot：Spring Boot版 Sharding JDBC 不分库，只分表案例
 
 > jdbc-sharding-table-read-write-springboot：Spring Boot版 Sharding JDBC 不分库，只分表+读写分离案例
 
