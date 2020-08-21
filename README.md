@@ -48,11 +48,12 @@ https://github.com/apache/rocketmq/blob/master/docs/cn/RocketMQ_Example.md
 
 > jdbc-db-sharding-springboot：Spring Boot版 Sharding JDBC 垂直拆分（不同的表在不同的库中） : 完成更新
 
+> jdbc-db-sharding-table-springboot：Spring Boot版 Sharding JDBC 分库分表案例 
+
+
 > jdbc-db-read-write-sharding-springboot：Spring Boot版 Sharding JDBC 垂直拆分（不同的表在不同的库中）+ 读写分离
 
 > jdbc-sharding-table-read-write-springboot：Spring Boot版 Sharding JDBC 不分库，只分表+读写分离案例
-
-> jdbc-db-sharding-table-springboot：Spring Boot版 Sharding JDBC 分库分表案例
 
 > jdbc-db-sharding-table-read-write-springboot：Spring Boot版 Sharding JDBC 分库分表+读写分离案例
 

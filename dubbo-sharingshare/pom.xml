@@ -18,6 +18,7 @@
 		<module>springboot-sharingjdbc-read-write-sample</module>
 		<module>springboot-sharingjdbc-table-sample</module>
         <module>springboot-sharingjdbc-db-sharing-sample</module>
+        <module>springboot-sharingjdbc-db-sharing-table-sample</module>
     </modules>
 
     <properties>
