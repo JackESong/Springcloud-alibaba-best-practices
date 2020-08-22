@@ -18,6 +18,10 @@
 		<module>springboot-sharingjdbc-read-write-sample</module>
 		<module>springboot-sharingjdbc-table-sample</module>
         <module>springboot-sharingjdbc-db-sharing-sample</module>
+        <module>springboot-sharingjdbc-db-sharing-table-sample</module>
+        <module>springboot-sharingjdbc-db-read-write-sharding-sample</module>
+        <module>springboot-sharingjdbc-table-read-write-sharding-sample</module>
+        <module>springboot-sharingjdbc-db-sharding-table-read-write-range-group</module>
     </modules>
 
     <properties>
