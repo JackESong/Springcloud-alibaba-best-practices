@@ -58,9 +58,9 @@ https://github.com/apache/rocketmq/blob/master/docs/cn/RocketMQ_Example.md
 
 代码整合自 https://github.com/yinjihuan/sharding-jdbc 进行功能校验
 
-## 10.dubbo-mqsql/oracle/sqlserver
+## 10.dubbo-seata
 规划中
-## 11.dubbo-seata
+## 11.dubbo-netty
 规划中
 ## 12.dubbo-mongodb
 规划中
