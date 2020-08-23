@@ -70,9 +70,10 @@ For more, check my getting started guide here: https://dev.to/petros0/getting-st
 http://localhost:8080/annotated/users
 http://localhost:8080/annotated/user/1
 
-## 12.dubbo-seata
-规划中
-## 13.themeleaf
+## 12.dubbo-netty
+自定义开发中
+
+## 13.dubbo-seata
 规划中
 ## 14.dubbo-nacos-config
 规划中
