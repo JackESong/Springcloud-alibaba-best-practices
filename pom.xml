@@ -29,6 +29,7 @@
         <module>dubbo-redisson</module>
 		<module>dubbo-sharingshare</module>
         <module>dubbo-rsocket</module>
+        <module>dubbo-webflux</module>
 		<module>dubbo-netty</module>
     </modules>
 

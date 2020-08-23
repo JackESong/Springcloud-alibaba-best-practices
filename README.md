@@ -66,7 +66,10 @@ For more, check my getting started guide here: https://dev.to/petros0/getting-st
 测试中，还有问题，待处理
 
 ## 11.dubbo-webflux
-规划中
+测试中
+http://localhost:8080/annotated/users
+http://localhost:8080/annotated/user/1
+
 ## 12.dubbo-seata
 规划中
 ## 13.themeleaf
