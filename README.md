@@ -58,11 +58,16 @@ https://github.com/apache/rocketmq/blob/master/docs/cn/RocketMQ_Example.md
 
 代码整合自 https://github.com/yinjihuan/sharding-jdbc 进行功能校验
 
-## 10.dubbo-seata
+## 10.dubbo-Rsocket
+Navigate to:
+http://localhost:8080/greet/{YourName}
+http://localhost:8080/greet-stream/{YourName}
+For more, check my getting started guide here: https://dev.to/petros0/getting-started-with-rsocket-in-springboot-5889.
+测试中，还有问题，待处理
+
+## 11.dubbo-webflux
 规划中
-## 11.dubbo-netty
-规划中
-## 12.dubbo-mongodb
+## 12.dubbo-seata
 规划中
 ## 13.themeleaf
 规划中
@@ -72,7 +77,7 @@ https://github.com/apache/rocketmq/blob/master/docs/cn/RocketMQ_Example.md
 规划中
 ## 16.dubbo-apollo
 规划中
-## 17.dubbo-测试
+## 17.dubbo-dba
 规划中
 ## 18.dubbo-job
 规划中
