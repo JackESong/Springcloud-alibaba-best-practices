@@ -18,9 +18,9 @@ import java.util.List;
 @Component
 @Service(
         version = "1.0.0",
-        application = "${dubbo.application.id}",
-        protocol = "${dubbo.protocol.id}",
-        registry = "${dubbo.registry.id}",
+        application = "${jdbc.application.id}",
+        protocol = "${jdbc.protocol.id}",
+        registry = "${jdbc.registry.id}",
         timeout = 1200000,
         interfaceClass = HelloService.class,
         actives = 50,

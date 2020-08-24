@@ -18,15 +18,15 @@ spring:
           lowerCaseServiceId: true
           enabled: true #让gateway可以发现nacos中的微服务
       routes: # 路由数组  指当请求满足什么样的条件的时候，转发到哪个微服务上
-      - id: micro-dubbo-rest-a #当前路由标识，要求唯一 （默认值uuid，一般不用，需要自定义）
-        uri: lb://micro-dubbo-rest-a #请求最终要被转发的地址   lb指的是从nacos中按照名称获取微服务,并遵循负载均衡策略
+      - id: micro-jdbc-rest-a #当前路由标识，要求唯一 （默认值uuid，一般不用，需要自定义）
+        uri: lb://micro-jdbc-rest-a #请求最终要被转发的地址   lb指的是从nacos中按照名称获取微服务,并遵循负载均衡策略
         order: 1 #路由优先级，数字越小，优先级越高
         predicates: #断言 判断条件，返回值是boolean 转发请求要返回的条件 （可以写多个）、
         - Path=/api-a/** #当请求路径满足path指定的规则时，此路由信息才会正常转发
         filters: #过滤器（在请求传递过程中，对请求做一些手脚）
         #- StripPrefix=1 # 在请求转发之前去掉一层路径
-      - id: micro-dubbo-rest-b
-        uri: lb://micro-dubbo-rest-b
+      - id: micro-jdbc-rest-b
+        uri: lb://micro-jdbc-rest-b
         order: 2
         predicates:
         - Path=/api-b/**

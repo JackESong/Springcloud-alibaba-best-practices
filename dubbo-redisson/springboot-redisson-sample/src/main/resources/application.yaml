@@ -30,7 +30,7 @@ logging:
 ###########################################################
 spring:
   application:
-    name: micro-dubbo-shardingjdbc
+    name: micro-jdbc-shardingjdbc
   http:
     encoding:
       enabled: true

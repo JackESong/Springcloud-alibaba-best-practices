@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
 
     @Reference(version = "1.0.0",
-            application = "${dubbo.application.id}",
+            application = "${jdbc.application.id}",
             check = false,
             timeout = 1200000,
             interfaceClass = HelloService.class)

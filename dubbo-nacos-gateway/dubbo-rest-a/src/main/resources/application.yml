@@ -7,19 +7,19 @@ dubbo:
   consumer:
     timeout: 30000
   application:
-    id: micro-dubbo-rest-a
-    name: micro-dubbo-rest-a
+    id: micro-jdbc-rest-a
+    name: micro-jdbc-rest-a
   protocol:
-    name: dubbo
+    name: jdbc
     port: -1
   registry:
     address: spring-cloud://127.0.0.1
   cloud:
-    subscribed-services: micro-dubbo-provider
+    subscribed-services: micro-jdbc-provider
 
 spring:
   application:
-    name: micro-dubbo-rest-a
+    name: micro-jdbc-rest-a
   cloud:
     nacos:
       discovery:

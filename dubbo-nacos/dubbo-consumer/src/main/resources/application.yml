@@ -1,25 +1,25 @@
 server:
   port: 8080
   servlet:
-    context-path: /dubbo
+    context-path: /jdbc
 
 dubbo:
   consumer:
     timeout: 30000
   application:
-    id: micro-dubbo-comsumer
-    name: micro-dubbo-comsumer
+    id: micro-jdbc-comsumer
+    name: micro-jdbc-comsumer
   protocol:
-    name: dubbo
+    name: jdbc
     port: -1
   registry:
     address: spring-cloud://127.0.0.1
   cloud:
-    subscribed-services: micro-dubbo-provider
+    subscribed-services: micro-jdbc-provider
 
 spring:
   application:
-    name: dubbo-spring-cloud-consumer
+    name: jdbc-spring-cloud-consumer
   cloud:
     nacos:
       discovery:

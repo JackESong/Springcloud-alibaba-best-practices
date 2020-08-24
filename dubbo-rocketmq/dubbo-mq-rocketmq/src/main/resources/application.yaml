@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: micro-dubbo-mq-rocketmq
+    name: micro-jdbc-mq-rocketmq
   cloud:
     nacos:
       discovery:
@@ -18,14 +18,14 @@ dubbo:
   scan:
     base-packages: com.springcloud.dubbo_provider.service
   application:
-    id: micro-dubbo-mq-rocketmq
-    name: micro-dubbo-mq-rocketmq
+    id: micro-jdbc-mq-rocketmq
+    name: micro-jdbc-mq-rocketmq
   protocol:
-    id: dubbo
-    name: dubbo
+    id: jdbc
+    name: jdbc
     port: 20881
     status: server
   registry:
-    id: micro-dubbo-mq-rocketmq-registry
+    id: micro-jdbc-mq-rocketmq-registry
     address: spring-cloud://127.0.0.1
 

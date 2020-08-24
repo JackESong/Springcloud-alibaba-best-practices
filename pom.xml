@@ -31,6 +31,7 @@
         <module>dubbo-rsocket</module>
         <module>dubbo-webflux</module>
 		<module>dubbo-netty</module>
+        <module>dubbo-elasticsearch</module>
     </modules>
 
     <properties>
