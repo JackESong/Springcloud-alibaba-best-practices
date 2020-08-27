@@ -40,28 +40,28 @@ public class QueryServiceTest {
      * 创建index 输入数据
      *
      * */
-    @Before
-    public void setUp(){
-        Random random = new Random();
-        for(int i = 0 ; i < 1200; i++){
-            Order order = new Order();
-            int j = random.nextInt(20) % 20 + 1;
-            order.setId(i);
-            order.setStoreId(j);
-            order.setStoreName("旗舰店"+ j);
-            order.setCategoryId(j);
-            order.setCategoryCode("shirt_"+j);
-            order.setProductCode("product_"+i);
-            order.setQuantity(random.nextInt(20) % 20 + 1);
-            order.setAmount(200 + (random.nextInt(20) % 20 + 1));
-            order.setPayDate(new Date());
-            String jsonStr = JSON.toJSONString(order, SerializerFeature.WriteDateUseDateFormat);
-            bulkProcessor.add(new IndexRequest("search_index",
-                    "search_index", i+"")
-                    .source(jsonStr, XContentType.JSON));
-        }
-
-    }
+//    @Before
+//    public void setUp(){
+//        Random random = new Random();
+//        for(int i = 0 ; i < 1200; i++){
+//            Order order = new Order();
+//            int j = random.nextInt(20) % 20 + 1;
+//            order.setId(i);
+//            order.setStoreId(j);
+//            order.setStoreName("旗舰店"+ j);
+//            order.setCategoryId(j);
+//            order.setCategoryCode("shirt_"+j);
+//            order.setProductCode("product_"+i);
+//            order.setQuantity(random.nextInt(20) % 20 + 1);
+//            order.setAmount(200 + (random.nextInt(20) % 20 + 1));
+//            order.setPayDate(new Date());
+//            String jsonStr = JSON.toJSONString(order, SerializerFeature.WriteDateUseDateFormat);
+//            bulkProcessor.add(new IndexRequest("search_index",
+//                    "search_index", i+"")
+//                    .source(jsonStr, XContentType.JSON));
+//        }
+//
+//    }
 
 
 
@@ -75,7 +75,7 @@ public class QueryServiceTest {
     public void testQueryListFromES(){
         Es es = new Es("search_index","search_index");
         List<Map<String, Object>> list = queryService
-                .queryListFromES(es, 13,"旗舰店"+13, "2018-12-01", "2018-12-31");
+                .queryListFromES(es, 13,"旗舰店"+13, "2020-01-01", "2020-12-31");
         System.out.println(JSON.toJSONString(list));
     }
 
