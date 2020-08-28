@@ -30,8 +30,9 @@
 		<module>dubbo-sharingshare</module>
         <module>dubbo-rsocket</module>
         <module>dubbo-webflux</module>
-		<module>dubbo-netty</module>
         <module>dubbo-elasticsearch</module>
+        <module>dubbo-mapper</module>
+        <module>dubbo-netty</module>
     </modules>
 
     <properties>

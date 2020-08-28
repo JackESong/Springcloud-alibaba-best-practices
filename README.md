@@ -68,28 +68,36 @@ For more, check my getting started guide here: https://dev.to/petros0/getting-st
 http://localhost:8080/annotated/users
 http://localhost:8080/annotated/user/1
 
-## 12.dubbo-netty
+## 12.dubbo-es
+整合https://github.com/whiney/springboot-elasticsearch，测试完成、
+
+## 13.dubbo-mapper
+分页插件实验
+<!--分页插件 -->
+<dependency>
+    <groupId>com.github.pagehelper</groupId>
+    <artifactId>pagehelper</artifactId>
+    <version>4.2.1</version>
+</dependency>
+
+## 14.dubbo-netty
 自定义开发中
 
-## 13.dubbo-es
-https://github.com/whiney/springboot-elasticsearch
-
-
 规划中
-## 14.dubbo-seata
+## 15.dubbo-seata
 规划中
 
-## 15.dubbo-hystrix
+## 16.dubbo-hystrix
 规划中
-## 16.dubbo-apollo
+## 17.dubbo-apollo
 规划中
-## 17.dubbo-dba
-规划中
-## 18.dubbo-job
+## 18.dubbo-dba
 规划中
 ## 19.dubbo-minio
 规划中
 ## 20.dubbo-ceph
 规划中
 ## 21.dubbo-nacos-config
+规划中
+## 22.dubbo-job
 规划中
