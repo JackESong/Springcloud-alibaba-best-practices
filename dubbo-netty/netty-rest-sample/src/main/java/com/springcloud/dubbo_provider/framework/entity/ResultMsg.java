@@ -1,7 +1,7 @@
 package com.springcloud.dubbo_provider.framework.entity;
 
 
-import com.google.gson.Gson;
+import com.alibaba.fastjson.JSON;
 import com.springcloud.dubbo_provider.framework.e.BasicConstants;
 import org.apache.commons.lang.StringUtils;
 
@@ -10,7 +10,6 @@ import java.util.Map;
 
 public class ResultMsg {
 
-	private static Gson gson = new Gson();
 	private int returnCode;
 	private String desc = "";
 	
@@ -62,7 +61,7 @@ public class ResultMsg {
 	{   
 		result.put("head", head);
 		result.put("body", body);
-		return gson.toJson(result);
+		return JSON.toJSONString(result);
 	}
 
 }

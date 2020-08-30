@@ -10,9 +10,9 @@ import java.util.concurrent.Executors;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Utils {
+public class CommonUtils {
 
-	private static Logger LOGGER = LoggerFactory.getLogger(Utils.class);
+	private static Logger LOGGER = LoggerFactory.getLogger(CommonUtils.class);
 	private static ExecutorService pool = Executors.newCachedThreadPool();
 	private static long preUpTime = 0;
 	
@@ -39,7 +39,7 @@ public class Utils {
 		return null;
 	}
 	public static String getFilePathInClassPath(String fileName){
-		return Utils.class.getResource("/" + fileName).getPath();
+		return CommonUtils.class.getResource("/" + fileName).getPath();
 	}
 	public static String getConfigFilePath(String fileName) {
 		String path = System.getProperty("user.dir") + File.separator + "conf"

@@ -1,10 +1,8 @@
 package com.springcloud.dubbo_provider.framework.http;
 
+import com.springcloud.dubbo_provider.framework.http.handler.HttpServerChannelInitializer;
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.EventLoopGroup;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -32,8 +30,13 @@ public class EchoServer {
      * 一个用于接收客户端的TCP连接，
      * 另一个用于处理I/O相关的读写操作，或者执行系统Task、定时任务Task等。
      */
-    private final EventLoopGroup bossGroup = new NioEventLoopGroup();
-    private final EventLoopGroup workerGroup = new NioEventLoopGroup();
+    private final EventLoopGroup bossGroup = new NioEventLoopGroup(getThreadNumber());
+    private final EventLoopGroup workerGroup = new NioEventLoopGroup(500);
+
+    private static int getThreadNumber() {
+        return  2*Runtime.getRuntime().availableProcessors()+1;
+    }
+
     private Channel channel;
     /**
      * 启动服务
@@ -44,22 +47,18 @@ public class EchoServer {
      */
     public ChannelFuture start(String hostname, int port) throws Exception {
 
-        final EchoServerHandler serverHandler = new EchoServerHandler();
         ChannelFuture f = null;
         try {
             //ServerBootstrap负责初始化netty服务器，并且开始监听端口的socket请求
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
+                    .option(ChannelOption.SO_BACKLOG, 9096)
+                    .childOption(ChannelOption.SO_KEEPALIVE, true)
+                    .childOption(ChannelOption.TCP_NODELAY, true)
+                    .childOption(ChannelOption.SO_REUSEADDR,true)
                     .localAddress(new InetSocketAddress(hostname,port))
-                    .childHandler(new ChannelInitializer<SocketChannel>() {
-                        @Override
-                        protected void initChannel(SocketChannel socketChannel) throws Exception {
-//                            为监听客户端read/write事件的Channel添加用户自定义的ChannelHandler
-                            socketChannel.pipeline().addLast(serverHandler);
-                        }
-                    });
-
+                    .childHandler(new HttpServerChannelInitializer()); //重用地址
             f = b.bind().sync();
             channel = f.channel();
             log.info("======EchoServer启动成功!!!=========");

@@ -1,52 +1,83 @@
 package com.springcloud.dubbo_provider.framework.http;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import io.netty.channel.ChannelFutureListener;
+import com.springcloud.dubbo_provider.framework.http.action.BaseController;
+import com.springcloud.dubbo_provider.project.route.DispathActionManager;
+import com.springcloud.dubbo_provider.framework.http.auth.TokenManager;
+import com.springcloud.dubbo_provider.framework.e.BasicConstants;
+import com.springcloud.dubbo_provider.framework.entity.Request;
+import com.springcloud.dubbo_provider.framework.entity.Response;
+import com.springcloud.dubbo_provider.framework.entity.ResultMsg;
+import static io.netty.handler.codec.http.HttpHeaders.Names.CONNECTION;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.util.CharsetUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /***
  * 服务端自定义业务处理handler
  */
 public class EchoServerHandler extends ChannelInboundHandlerAdapter {
 
-    /**
-     * 对每一个传入的消息都要调用；
-     * @param ctx
-     * @param msg
-     * @throws Exception
-     */
+    private static Logger LOGGER = LoggerFactory
+            .getLogger(EchoServerHandler.class);
+
+    private static TokenManager tokenManager = null;
+
+    private Request request;
+
     @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+    public void channelRead(ChannelHandlerContext ctx, Object msg)
+            throws Exception {
 
-        ByteBuf in = (ByteBuf) msg;
-        System.out.println("server received: "+in.toString(CharsetUtil.UTF_8));
+        if (msg instanceof Request) {
+            request = (Request) msg;
+            System.out.println(request);
+            request.addLogs(request.toString());
+            String jsonResult = "";
+            ResultMsg res = new ResultMsg();
+            try {
+                String requestPath = request.getHttpPath();
+                BaseController action = null;
+//                String token = request.get("jwt_token");
+                action = DispathActionManager.getAction(request);
+                if ("GET".equals(request.getRequestMethod())|| "POST".equals(request.getRequestMethod())) {
+                    jsonResult = action.doAction(request);
+                    request.addLogs(request.getRequestMethod() + "- json result is " + jsonResult);
+                }  else {
+                    request.addLogs("do nothing...");
+                    return;
+                }
 
-        ctx.write(in);
+            }catch (Exception e) {
+                LOGGER.error("error message is :", e);
+                res.addReturnCode(BasicConstants.RETURN_CODE_ERROR);
+                res.addReturnDesc(BasicConstants.EXCEPTION_DES);
+                jsonResult = res.toJson();
+            }finally{
+                Response response = new Response();
+                response.setContent(jsonResult.getBytes());
+                response.setLogs(request.getLogs());
+                response.put(CONNECTION, request.getHead(CONNECTION));
+                ctx.write(response);
+            }
+        }else{
+            ctx.write(msg);
+        }
+
     }
 
-
-    /**
-     * 通知ChannelInboundHandler最后一次对channelRead()的调用时当前批量读取中的的最后一条消息。
-     * @param ctx
-     * @throws Exception
-     */
     @Override
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {
-        ctx.writeAndFlush(Unpooled.EMPTY_BUFFER).addListener(ChannelFutureListener.CLOSE);
+//		super.channelReadComplete(ctx);
+        ctx.flush();
     }
 
-    /**
-     * 在读取操作期间，有异常抛出时会调用。
-     * @param ctx
-     * @param cause
-     * @throws Exception
-     */
     @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        cause.printStackTrace();
-        ctx.close();
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
+        LOGGER.error("error:",cause);
+        ResultMsg res = new ResultMsg();
+        res.addReturnDesc(BasicConstants.EXCEPTION_DES);
+        res.addReturnCode(BasicConstants.RETURN_CODE_ERROR);
+        ctx.write(res.toJson());
     }
 }

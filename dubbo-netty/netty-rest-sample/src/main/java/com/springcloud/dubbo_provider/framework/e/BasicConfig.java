@@ -1,6 +1,6 @@
 package com.springcloud.dubbo_provider.framework.e;
 
-import com.springcloud.dubbo_provider.framework.Utils.Utils;
+import com.springcloud.dubbo_provider.framework.Utils.CommonUtils;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +13,8 @@ import java.util.Properties;
 import java.util.TimerTask;
 
 
-public class BasicConfig extends TimerTask{
+public class BasicConfig extends TimerTask {
+
 	private static Logger LOGGER	= LoggerFactory.getLogger(BasicConfig.class);
 	private static Properties properties = null;
 	private static String defaultConfName = "default.properties";
@@ -26,7 +27,7 @@ public class BasicConfig extends TimerTask{
 		InputStream inStream = null;
 		BufferedReader br = null;
 		try {
-			inStream = Utils.getConfigFileStream(defaultConfName);
+			inStream = CommonUtils.getConfigFileStream(defaultConfName);
 			if(inStream == null){
 				throw new RuntimeException("not found configer file...");
 			}

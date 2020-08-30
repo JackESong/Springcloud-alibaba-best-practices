@@ -82,7 +82,8 @@ http://localhost:8080/annotated/user/1
 
 ## 14.dubbo-netty
 自定义开发中
-
+下发token
+http://127.0.0.1:9090/getToken
 规划中
 ## 15.dubbo-seata
 规划中
