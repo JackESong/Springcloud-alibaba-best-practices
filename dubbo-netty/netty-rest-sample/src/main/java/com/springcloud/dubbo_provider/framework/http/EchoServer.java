@@ -7,6 +7,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.net.InetSocketAddress;
@@ -38,6 +39,10 @@ public class EchoServer {
     }
 
     private Channel channel;
+
+    @Autowired
+    private HttpServerChannelInitializer httpServerChannelInitializer;
+
     /**
      * 启动服务
      * @param hostname
@@ -58,7 +63,8 @@ public class EchoServer {
                     .childOption(ChannelOption.TCP_NODELAY, true)
                     .childOption(ChannelOption.SO_REUSEADDR,true)
                     .localAddress(new InetSocketAddress(hostname,port))
-                    .childHandler(new HttpServerChannelInitializer()); //重用地址
+//                    .childHandler(new HttpServerChannelInitializer()); //重用地址
+                    .childHandler(httpServerChannelInitializer); //重用地址
             f = b.bind().sync();
             channel = f.channel();
             log.info("======EchoServer启动成功!!!=========");

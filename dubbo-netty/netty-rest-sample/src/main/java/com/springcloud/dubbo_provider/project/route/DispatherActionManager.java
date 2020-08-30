@@ -5,7 +5,7 @@ import com.springcloud.dubbo_provider.project.controller.ErrorController;
 import com.springcloud.dubbo_provider.framework.http.action.BaseController;
 import com.springcloud.dubbo_provider.project.controller.TokenController;
 
-public class DispathActionManager {
+public class DispatherActionManager {
 
     public static BaseController getAction(Request req){
 

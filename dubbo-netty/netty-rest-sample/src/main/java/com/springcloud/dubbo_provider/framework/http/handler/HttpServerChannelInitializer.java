@@ -7,14 +7,18 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.http.HttpRequestDecoder;
 import io.netty.handler.codec.http.HttpResponseEncoder;
 import io.netty.handler.timeout.IdleStateHandler;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 
+@Component
+public class HttpServerChannelInitializer extends ChannelInitializer<SocketChannel> {
 
-public class HttpServerChannelInitializer extends ChannelInitializer<SocketChannel>
-{
+    @Autowired
+    private EchoServerHandler echoServerHandler;
+
     @Override
-    protected void initChannel(SocketChannel ch) throws Exception
-    {
+    protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
         // server端接收到的是httpRequest，所以要使用HttpRequestDecoder进行解码
         pipeline.addLast(new HttpRequestDecoder());
@@ -27,7 +31,8 @@ public class HttpServerChannelInitializer extends ChannelInitializer<SocketChann
         pipeline.addLast("idle",new IdleStateHandler(10, 0, 0));
         pipeline.addLast("idleClose", new HeartbeatHandler());
 
-        pipeline.addLast(new EchoServerHandler());
+//        pipeline.addLast(new EchoServerHandler());
+        pipeline.addLast(echoServerHandler);
 
     }
 

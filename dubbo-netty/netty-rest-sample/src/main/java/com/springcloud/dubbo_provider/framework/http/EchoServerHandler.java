@@ -1,21 +1,28 @@
 package com.springcloud.dubbo_provider.framework.http;
 
 import com.springcloud.dubbo_provider.framework.http.action.BaseController;
-import com.springcloud.dubbo_provider.project.route.DispathActionManager;
+import com.springcloud.dubbo_provider.project.controller.TokenController;
+import com.springcloud.dubbo_provider.project.route.DispatherActionManager;
 import com.springcloud.dubbo_provider.framework.http.auth.TokenManager;
 import com.springcloud.dubbo_provider.framework.e.BasicConstants;
 import com.springcloud.dubbo_provider.framework.entity.Request;
 import com.springcloud.dubbo_provider.framework.entity.Response;
 import com.springcloud.dubbo_provider.framework.entity.ResultMsg;
 import static io.netty.handler.codec.http.HttpHeaders.Names.CONNECTION;
+
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /***
  * 服务端自定义业务处理handler
  */
+@ChannelHandler.Sharable
+@Component
 public class EchoServerHandler extends ChannelInboundHandlerAdapter {
 
     private static Logger LOGGER = LoggerFactory
@@ -24,6 +31,9 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
     private static TokenManager tokenManager = null;
 
     private Request request;
+
+    @Autowired
+    private TokenController tokenController;
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg)
@@ -37,11 +47,13 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
             ResultMsg res = new ResultMsg();
             try {
                 String requestPath = request.getHttpPath();
-                BaseController action = null;
-//                String token = request.get("jwt_token");
-                action = DispathActionManager.getAction(request);
                 if ("GET".equals(request.getRequestMethod())|| "POST".equals(request.getRequestMethod())) {
-                    jsonResult = action.doAction(request);
+                    jsonResult = tokenController.doAction(request);// 试验成功
+//                BaseController action = null;
+//                String token = request.get("jwt_token");
+//                action = DispatherActionManager.getAction(request);
+//                if ("GET".equals(request.getRequestMethod())|| "POST".equals(request.getRequestMethod())) {
+//                    jsonResult = action.doAction(request);
                     request.addLogs(request.getRequestMethod() + "- json result is " + jsonResult);
                 }  else {
                     request.addLogs("do nothing...");
