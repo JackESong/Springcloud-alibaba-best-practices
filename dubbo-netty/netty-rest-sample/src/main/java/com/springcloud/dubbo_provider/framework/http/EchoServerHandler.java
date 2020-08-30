@@ -1,8 +1,5 @@
 package com.springcloud.dubbo_provider.framework.http;
 
-import com.springcloud.dubbo_provider.framework.http.action.BaseController;
-import com.springcloud.dubbo_provider.project.controller.TokenController;
-import com.springcloud.dubbo_provider.project.route.DispatherActionManager;
 import com.springcloud.dubbo_provider.framework.http.auth.TokenManager;
 import com.springcloud.dubbo_provider.framework.e.BasicConstants;
 import com.springcloud.dubbo_provider.framework.entity.Request;
@@ -10,6 +7,8 @@ import com.springcloud.dubbo_provider.framework.entity.Response;
 import com.springcloud.dubbo_provider.framework.entity.ResultMsg;
 import static io.netty.handler.codec.http.HttpHeaders.Names.CONNECTION;
 
+import com.springcloud.dubbo_provider.framework.http.route.RequestDispatcher;
+import com.springcloud.dubbo_provider.project.controller.TokenController;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -17,6 +16,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 
 /***
  * 服务端自定义业务处理handler
@@ -34,7 +35,8 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
 
     @Autowired
     private TokenController tokenController;
-
+    @Resource
+    private RequestDispatcher dispatcher;
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg)
             throws Exception {
