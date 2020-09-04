@@ -33,6 +33,7 @@
         <module>dubbo-elasticsearch</module>
         <module>dubbo-mapper</module>
         <module>dubbo-netty</module>
+        <module>dubbo-akka</module>
     </modules>
 
     <properties>
